@@ -38,6 +38,7 @@ import banner_3 from './banner-3.png'
 // Products data
 const products = [
   {
+    id:1,
     tag: {
       name: "Hot",
       bgColor: "#ff75a0"
@@ -60,6 +61,7 @@ const products = [
     inCart: false
   },
   {
+    id:2,
     tag: {
       name: "New",
       bgColor: "#99bbad"
@@ -82,6 +84,7 @@ const products = [
     inCart: false
   },
   {
+    id:3,
     tag: {
       name: "Best Sell",
       bgColor: "#ffab73"
@@ -104,6 +107,7 @@ const products = [
     inCart: false
   },
   {
+    id:4,
     tag: {
       name: "Sale",
       bgColor: "#a1cae2"
@@ -126,6 +130,7 @@ const products = [
     inCart: false
   },
   {
+    id:5,
     tag: {
       name: "-30%",
       bgColor: "#ff75a0"
@@ -148,6 +153,7 @@ const products = [
     inCart: false
   },
   {
+    id:6,
     tag: {
       name: "-22%",
       bgColor: "#ff75a0"
@@ -170,6 +176,7 @@ const products = [
     inCart: false
   },
   {
+    id:7,
     tag: {
       name: "New",
       bgColor: "#ffab73"
@@ -192,6 +199,7 @@ const products = [
     inCart: false
   },
   {
+    id:8,
     tag: {
       name: undefined,
       bgColor: undefined

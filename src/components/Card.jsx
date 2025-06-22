@@ -1,9 +1,8 @@
-import React from "react";
-
+import React, { useContext } from "react";
 // import { CiHeart } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa6";
-
 import { BsBagDash } from "react-icons/bs";
+import { ContextProduct } from "../context/ProjectContext";
 
 function Card({
   index,
@@ -14,7 +13,10 @@ function Card({
   ratinStar,
   ratingPre,
   itemPrice,
+  item
 }) {
+  const { addProductToWishList } = useContext(ContextProduct);
+
   return (
     <div
       className={`card rounded-3xl p-3 ${
@@ -34,7 +36,7 @@ function Card({
         />
         <div className=" absolute flex justify-center items-center opacity-0 top-0 left-0 w-full h-full bg-red-700 group-hover:opacity-100 z-10">
           <div className="w-[30px] h-[30px] hover:bg-[#088178] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full">
-            <FaRegHeart className="" onClick={() => addProduct()} />
+            <FaRegHeart className="" onClick={() => addProductToWishList(item.id)} />
           </div>
         </div>
         <div
