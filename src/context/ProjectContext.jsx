@@ -24,6 +24,12 @@ function ProdectContext({ children }) {
     } 
   }
 
+  // Delete item from Wish List
+  const deleteProduct = (id)=>{
+    const updatedWishList = wishList.filter((item)=>item.id !== id);
+    setWishList(updatedWishList)
+  }
+
   // console.log(wishList);
   
 
@@ -35,7 +41,8 @@ function ProdectContext({ children }) {
     token,
     setToken,
     wishList,
-   addProductToWishList
+   addProductToWishList,
+   deleteProduct
   };
 
   return (
