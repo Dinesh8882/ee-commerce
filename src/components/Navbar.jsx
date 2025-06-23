@@ -12,6 +12,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { MdWindow, MdOutlineMenu } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa6";
 
 import ResponsiveNavbar from "../components/ResponsiveNavbar";
 import { LuHeadset } from "react-icons/lu";
@@ -23,7 +24,7 @@ import { ContextProduct } from "../context/ProjectContext";
 
 function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
-  const { token } = useContext(ContextProduct);
+  const { token, wishList } = useContext(ContextProduct);
 
   return (
     <div className="">
@@ -51,7 +52,8 @@ function Navbar() {
                 <p className="flex items-center px-3">
                   <FiUser />
                   <span>
-                    <Link to='/user/login'>Log In</Link>/<Link to='/user/register'>Sign Up</Link>
+                    <Link to="/user/login">Log In</Link>/
+                    <Link to="/user/register">Sign Up</Link>
                   </span>
                 </p>
               )}
@@ -82,8 +84,14 @@ function Navbar() {
           </div>
           <div className="cart  flex text-3xl text-gray-500 items-center gap-3 justify-evenly">
             <Link to="/wishlist">
-              <IoHeartOutline />
-            </Link>
+            {
+              wishList.length > 0?(
+                <FaHeart  className="text-green-600"/>
+              ):
+              (
+                <IoHeartOutline />
+              )
+            }</Link>
             <Link to="/cart">
               <IoBagOutline />
             </Link>

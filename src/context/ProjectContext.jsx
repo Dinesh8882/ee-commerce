@@ -9,37 +9,32 @@ function ProdectContext({ children }) {
   const [scrollToIndex, setScrollToIndex] = useState(1);
   const [token, setToken] = useState("");
 
-  const [wishList,setWishList] = useState([]);
+  const [wishList, setWishList] = useState([]);
+  const [addToCart, setAddToCart] = useState([]);
 
   useEffect(() => {
     setToken(localStorage.getItem("token"));
   }, []);
 
-
   // Add to WishList
-  const addProductToWishList = (id)=>{
-    const product = products.find((item)=> item.id === id)
-    if(product && !wishList.some(item => item.id === product.id)){
-      product.inWishList = true
-      setWishList([...wishList,product])
-    } 
-  
-    
-  }
-  
-  // Delete item from Wish List
-  const deleteProduct = (id)=>{
-    const updatedWishList = wishList.filter((item)=>item.id !== id);
-    setWishList(updatedWishList)
-
-    const product = products.find((item)=>item.id === id)
-    if(product){
-      product.inWishList = false
+  const addProductToWishList = (id) => {
+    const product = products.find((item) => item.id === id);
+    if (product && !wishList.some((item) => item.id === product.id)) {
+      product.inWishList = true;
+      setWishList([...wishList, product]);
     }
-  }
+  };
 
+  // Delete item from Wish List
+  const deleteProductToWishList = (id) => {
+    const updatedWishList = wishList.filter((item) => item.id !== id);
+    setWishList(updatedWishList);
 
-  
+    const product = products.find((item) => item.id === id);
+    if (product) {
+      product.inWishList = false;
+    }
+  };
 
   const values = {
     currentIndex,
@@ -49,8 +44,8 @@ function ProdectContext({ children }) {
     token,
     setToken,
     wishList,
-   addProductToWishList,
-   deleteProduct
+    addProductToWishList,
+    deleteProductToWishList,
   };
 
   return (

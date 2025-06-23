@@ -6,7 +6,7 @@ import { BiShoppingBag } from "react-icons/bi";
 import { ContextProduct } from "../context/ProjectContext";
 
 function WishlistItems({ isitems }) {
-  const { wishList,deleteProduct } = useContext(ContextProduct);
+  const { wishList,deleteProductToWishList } = useContext(ContextProduct);
 
   return (
     <div className="mt-[4rem]">
@@ -120,7 +120,7 @@ function WishlistItems({ isitems }) {
                   </div>
                 </div>
                 <div className="col-span-1 flex items-center justify-center ">
-                  <RiDeleteBin6Line onClick={()=>deleteProduct(item.id)} className="cursor-pointer" />
+                  <RiDeleteBin6Line onClick={()=>deleteProductToWishList(item.id)} className="cursor-pointer" />
                 </div>
               </div>
             );
