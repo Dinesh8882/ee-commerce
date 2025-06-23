@@ -4,6 +4,8 @@ import { FaRegHeart } from "react-icons/fa6";
 import { BsBagDash } from "react-icons/bs";
 import { ContextProduct } from "../context/ProjectContext";
 
+import { TiHeartFullOutline } from "react-icons/ti";
+
 function Card({
   index,
   tag,
@@ -13,12 +15,14 @@ function Card({
   ratinStar,
   ratingPre,
   itemPrice,
-  item
+  itemId,
+  inWishList,
 }) {
-  const { addProductToWishList } = useContext(ContextProduct);
+  const { addProductToWishList, deleteProduct } = useContext(ContextProduct);
 
   return (
     <div
+      key={index}
       className={`card rounded-3xl p-3 ${
         categories && "border border-gray-300"
       } cursor-pointer relative group`}
@@ -34,10 +38,22 @@ function Card({
           className="absolute opacity-0 w-full top-0 left-0 group-hover:opacity-100 z-10 group-hover:scale-[1.1] transition-all duration-1000"
           alt="product"
         />
-        <div className=" absolute flex justify-center items-center opacity-0 top-0 left-0 w-full h-full bg-red-700 group-hover:opacity-100 z-10">
-          <div className="w-[30px] h-[30px] hover:bg-[#088178] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full">
-            <FaRegHeart className="" onClick={() => addProductToWishList(item.id)} />
-          </div>
+        <div className=" absolute flex justify-center items-center opacity-0 top-0 left-0 w-full h-full group-hover:opacity-100 z-10">
+          {inWishList ? (
+            <div
+              onClick={() => deleteProduct(itemId)}
+              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
+            >
+              <TiHeartFullOutline className="text-teal-400" />
+            </div>
+          ) : (
+            <div
+              onClick={() => addProductToWishList(itemId)}
+              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
+            >
+              <FaRegHeart className="text-teal-400" />
+            </div>
+          )}
         </div>
         <div
           className={`tag  absolute top-3 px-2 py-[1px] rounded-2xl text-white text-[12px] left-2`}

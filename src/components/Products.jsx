@@ -8,6 +8,7 @@ import Card from "./Card";
 
 function Cards() {
   
+  
 
   return (
     <div className="grid gap-8 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -23,6 +24,8 @@ function Cards() {
             title={item.title}
             tag={item.tag}
             categories={item.category}
+            itemId={item.id}
+            inWishList={item.inWishList}z
           />
         );
       })}

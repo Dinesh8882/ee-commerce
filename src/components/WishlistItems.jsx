@@ -7,7 +7,6 @@ import { ContextProduct } from "../context/ProjectContext";
 
 function WishlistItems({ isitems }) {
   const { wishList,deleteProduct } = useContext(ContextProduct);
-  console.log(wishList);
 
   return (
     <div className="mt-[4rem]">

@@ -58,7 +58,9 @@ const products = [
       front_img: product_1,
       back_img: product_1_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:2,
@@ -81,7 +83,9 @@ const products = [
       front_img: product_2,
       back_img: product_2_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:3,
@@ -104,7 +108,9 @@ const products = [
       front_img: product_3,
       back_img: product_3_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:4,
@@ -127,7 +133,9 @@ const products = [
       front_img: product_4,
       back_img: product_4_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:5,
@@ -150,7 +158,9 @@ const products = [
       front_img: product_5,
       back_img: product_5_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:6,
@@ -173,7 +183,9 @@ const products = [
       front_img: product_6,
       back_img: product_6_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:7,
@@ -196,7 +208,9 @@ const products = [
       front_img: product_7,
       back_img: product_7_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
   {
     id:8,
@@ -219,7 +233,9 @@ const products = [
       front_img: product_8,
       back_img: product_8_2
     },
-    inCart: false
+    inCart: false,
+    inWishList:false
+
   },
 ]
 

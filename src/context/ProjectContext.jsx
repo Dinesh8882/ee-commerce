@@ -20,17 +20,25 @@ function ProdectContext({ children }) {
   const addProductToWishList = (id)=>{
     const product = products.find((item)=> item.id === id)
     if(product && !wishList.some(item => item.id === product.id)){
+      product.inWishList = true
       setWishList([...wishList,product])
     } 
+  
+    
   }
-
+  
   // Delete item from Wish List
   const deleteProduct = (id)=>{
     const updatedWishList = wishList.filter((item)=>item.id !== id);
     setWishList(updatedWishList)
+
+    const product = products.find((item)=>item.id === id)
+    if(product){
+      product.inWishList = false
+    }
   }
 
-  // console.log(wishList);
+
   
 
   const values = {
