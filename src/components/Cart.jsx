@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import WishlistItems from "./WishlistItems";
 import { HiFingerPrint } from "react-icons/hi2";
 import { TiArrowShuffle } from "react-icons/ti";
@@ -7,8 +7,10 @@ import { BsClipboard2 } from "react-icons/bs";
 
 import SubButton from "./SubButton";
 import ApplyCoupan from "./ApplyCoupon";
+import { ContextProduct } from "../context/ProjectContext";
 
 function Cart() {
+  const { addToCart } = useContext(ContextProduct);
   return (
     <div>
       <WishlistItems isitems={true} />

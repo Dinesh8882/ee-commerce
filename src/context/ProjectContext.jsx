@@ -29,12 +29,25 @@ function ProdectContext({ children }) {
   const deleteProductToWishList = (id) => {
     const updatedWishList = wishList.filter((item) => item.id !== id);
     setWishList(updatedWishList);
-
     const product = products.find((item) => item.id === id);
     if (product) {
       product.inWishList = false;
     }
   };
+
+  // Add to Cart
+  const addProductToCart = (id) => {
+    const product = products.find((item) => item.id === id);
+    if (product && !addToCart.some((item) => item.id === product.id)) {
+      setAddToCart([...addToCart, product]);
+    }    
+  };
+
+
+  const deleteProductFromCart =(id)=>{
+    const deleteProduct = addToCart.filter((item)=>item.id !== id)
+    setAddToCart(deleteProduct);
+  }
 
   const values = {
     currentIndex,
@@ -46,6 +59,9 @@ function ProdectContext({ children }) {
     wishList,
     addProductToWishList,
     deleteProductToWishList,
+    addProductToCart,
+    addToCart,
+    deleteProductFromCart
   };
 
   return (
