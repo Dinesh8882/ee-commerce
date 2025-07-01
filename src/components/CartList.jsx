@@ -3,7 +3,7 @@ import { ContextProduct } from "../context/ProjectContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 function CartList() {
-  const { products, state, dispatch } = useContext(ContextProduct);
+  const { state, dispatch } = useContext(ContextProduct);
 
   const deleteProduct = (product) => {
     dispatch({ type: "DELETE_FROM_CART", payload: product });
@@ -12,7 +12,6 @@ function CartList() {
   const increaseQuantity = (id, quantity) => {
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
   };
-  console.log(state.cart);
   return (
     <div className="mt-[4rem]">
       <div className="head_line grid grid-cols-12 ">
@@ -67,6 +66,7 @@ function CartList() {
                 <input
                   type="number"
                   value={item.quantity}
+                  min={1}
                   onChange={(e) =>
                     increaseQuantity(item.id, Number(e.target.value))
                   }
@@ -74,7 +74,7 @@ function CartList() {
                 />
               </div>
               <div className="col-span-1 flex items-center justify-center border border-y-0 border-gray-300">
-                {item.price.current}
+                {item.totalPrice}
               </div>
               <div className="col-span-1 flex items-center justify-center ">
                 <RiDeleteBin6Line

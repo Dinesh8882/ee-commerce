@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-// import { CiHeart } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa6";
 import { BsBagDash } from "react-icons/bs";
 
 import { TiHeartFullOutline } from "react-icons/ti";
-import { ContextProduct } from "../context/ProjectContext";
 
 function Card({
   index,
@@ -19,7 +17,6 @@ function Card({
   addToWishList,
   item,
 }) {
-  const { state } = useContext(ContextProduct);
  
 
   return (

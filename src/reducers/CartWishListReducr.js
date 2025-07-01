@@ -29,7 +29,7 @@ export const wishCartReducer = (state, action) => {
       }
       return {
         ...state,
-        cart: [...state.cart, { ...action.payload, inCart: true }]
+        cart: [...state.cart, { ...action.payload, inCart: true, totalPrice: action.payload.price.current.toFixed(1) }]
       }
 
     case 'DELETE_FROM_CART':
@@ -42,7 +42,8 @@ export const wishCartReducer = (state, action) => {
         ...state,
         cart: state.cart.map(product => {
           if (product.id === action.payload.id) {
-            return { ...product, quantity: action.payload.quantity };
+            const newQuantity = action.payload.quantity
+            return { ...product, quantity: newQuantity, totalPrice: (newQuantity * product.price.current).toFixed(1) };
           }
           return product;
         })

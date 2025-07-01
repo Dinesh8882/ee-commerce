@@ -9,7 +9,7 @@ import ApplyCoupan from "./ApplyCoupon";
 import { ContextProduct } from "../context/ProjectContext";
 
 function Cart() {
-  const { addToCart } = useContext(ContextProduct);
+  const { subtotal, disCountTotal } = useContext(ContextProduct);
 
   return (
     <div>
@@ -55,7 +55,7 @@ function Cart() {
                 Cart Subtotal{" "}
               </p>
               <p className="flex-1 px-2 flex items-center text-[#088178] font-bold text-[18px]">
-                $240.00
+                ${subtotal} - 5% Dis
               </p>
             </div>
             <div className="flex border-y border-t-0  justify-between  border-gray-200">
@@ -69,7 +69,7 @@ function Cart() {
                 Total{" "}
               </p>
               <p className="flex-1 px-2 flex items-center text-[#088178] font-bold text-[18px]">
-                $240.00
+                ${disCountTotal}
               </p>
             </div>
           </div>

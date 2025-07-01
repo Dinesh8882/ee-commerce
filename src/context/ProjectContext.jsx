@@ -16,6 +16,11 @@ function ProdectContext({ children }) {
     wishlistOrCartInitialState
   );
 
+  const subtotal = state.cart.reduce((sum, product) => Number(sum + product.totalPrice), 0)
+
+  const disCountTotal = Math.floor(subtotal * 0.95);
+
+
   const values = {
     currentIndex,
     setCurrentIndex,
@@ -26,6 +31,8 @@ function ProdectContext({ children }) {
     products,
     state,
     dispatch,
+    subtotal,
+    disCountTotal,
   };
 
   return (
