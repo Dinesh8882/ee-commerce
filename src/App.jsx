@@ -24,6 +24,7 @@ function Layout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          {/* <Route path="/cart" element={<Wishlist />} /> */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route

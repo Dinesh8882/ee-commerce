@@ -38,7 +38,7 @@ import banner_3 from './banner-3.png'
 // Products data
 const products = [
   {
-    id:1,
+    id: 1,
     tag: {
       name: "Hot",
       bgColor: "#ff75a0"
@@ -59,11 +59,14 @@ const products = [
       back_img: product_1_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:2,
+    id: 2,
     tag: {
       name: "New",
       bgColor: "#99bbad"
@@ -84,11 +87,14 @@ const products = [
       back_img: product_2_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:3,
+    id: 3,
     tag: {
       name: "Best Sell",
       bgColor: "#ffab73"
@@ -109,11 +115,14 @@ const products = [
       back_img: product_3_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:4,
+    id: 4,
     tag: {
       name: "Sale",
       bgColor: "#a1cae2"
@@ -134,11 +143,14 @@ const products = [
       back_img: product_4_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:5,
+    id: 5,
     tag: {
       name: "-30%",
       bgColor: "#ff75a0"
@@ -159,11 +171,14 @@ const products = [
       back_img: product_5_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:6,
+    id: 6,
     tag: {
       name: "-22%",
       bgColor: "#ff75a0"
@@ -184,11 +199,14 @@ const products = [
       back_img: product_6_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:7,
+    id: 7,
     tag: {
       name: "New",
       bgColor: "#ffab73"
@@ -209,11 +227,14 @@ const products = [
       back_img: product_7_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
   {
-    id:8,
+    id: 8,
     tag: {
       name: undefined,
       bgColor: undefined
@@ -234,7 +255,10 @@ const products = [
       back_img: product_8_2
     },
     inCart: false,
-    inWishList:false
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1,
+    cartSubTotale: 1
 
   },
 ]

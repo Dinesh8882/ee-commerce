@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import WishlistItems from "./WishlistItems";
 import { HiFingerPrint } from "react-icons/hi2";
 import { TiArrowShuffle } from "react-icons/ti";
 import { AiFillCalendar } from "react-icons/ai";
-import { BsClipboard2 } from "react-icons/bs";
+import CartList from "./CartList";
 
 import SubButton from "./SubButton";
 import ApplyCoupan from "./ApplyCoupon";
@@ -11,9 +10,10 @@ import { ContextProduct } from "../context/ProjectContext";
 
 function Cart() {
   const { addToCart } = useContext(ContextProduct);
+
   return (
     <div>
-      <WishlistItems isitems={true} />
+      <CartList />
       <div className="my-[3rem] flex items-center gap-2">
         <div className="h-[2px] flex-1 bg-gray-200" />
         <HiFingerPrint className="text-2xl text-gray-600 " />

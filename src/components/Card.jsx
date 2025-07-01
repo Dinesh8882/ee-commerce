@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 // import { CiHeart } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa6";
 import { BsBagDash } from "react-icons/bs";
-import { ContextProduct } from "../context/ProjectContext";
 
 import { TiHeartFullOutline } from "react-icons/ti";
+import { ContextProduct } from "../context/ProjectContext";
 
 function Card({
   index,
@@ -15,10 +15,12 @@ function Card({
   ratinStar,
   ratingPre,
   itemPrice,
-  itemId,
   inWishList,
+  addToWishList,
+  item,
 }) {
-  const { addProductToWishList, deleteProduct } = useContext(ContextProduct);
+  const { state } = useContext(ContextProduct);
+ 
 
   return (
     <div
@@ -40,18 +42,15 @@ function Card({
         />
         <div className=" absolute flex justify-center items-center opacity-0 top-0 left-0 w-full h-full group-hover:opacity-100 z-10">
           {inWishList ? (
-            <div
-              onClick={() => deleteProduct(itemId)}
-              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
-            >
-              <TiHeartFullOutline className="text-teal-400" />
+            <div className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full">
+              <TiHeartFullOutline className="text-red-400" />
             </div>
           ) : (
-            <div
-              onClick={() => addProductToWishList(itemId)}
-              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
-            >
-              <FaRegHeart className="text-teal-400" />
+            <div className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full">
+              <FaRegHeart
+                onClick={() => addToWishList(item)}
+                className="text-green-400"
+              />
             </div>
           )}
         </div>

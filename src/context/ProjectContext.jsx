@@ -1,6 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-
+import React, { createContext, useContext, useReducer, useState } from "react";
 import { products } from "../assets/data";
+import {
+  wishCartReducer,
+  wishlistOrCartInitialState,
+} from "../reducers/CartWishListReducr";
 
 export const ContextProduct = createContext();
 
@@ -8,46 +11,10 @@ function ProdectContext({ children }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [scrollToIndex, setScrollToIndex] = useState(1);
   const [token, setToken] = useState("");
-
-  const [wishList, setWishList] = useState([]);
-  const [addToCart, setAddToCart] = useState([]);
-
-  useEffect(() => {
-    setToken(localStorage.getItem("token"));
-  }, []);
-
-  // Add to WishList
-  const addProductToWishList = (id) => {
-    const product = products.find((item) => item.id === id);
-    if (product && !wishList.some((item) => item.id === product.id)) {
-      product.inWishList = true;
-      setWishList([...wishList, product]);
-    }
-  };
-
-  // Delete item from Wish List
-  const deleteProductToWishList = (id) => {
-    const updatedWishList = wishList.filter((item) => item.id !== id);
-    setWishList(updatedWishList);
-    const product = products.find((item) => item.id === id);
-    if (product) {
-      product.inWishList = false;
-    }
-  };
-
-  // Add to Cart
-  const addProductToCart = (id) => {
-    const product = products.find((item) => item.id === id);
-    if (product && !addToCart.some((item) => item.id === product.id)) {
-      setAddToCart([...addToCart, product]);
-    }    
-  };
-
-
-  const deleteProductFromCart =(id)=>{
-    const deleteProduct = addToCart.filter((item)=>item.id !== id)
-    setAddToCart(deleteProduct);
-  }
+  const [state, dispatch] = useReducer(
+    wishCartReducer,
+    wishlistOrCartInitialState
+  );
 
   const values = {
     currentIndex,
@@ -56,12 +23,9 @@ function ProdectContext({ children }) {
     setScrollToIndex,
     token,
     setToken,
-    wishList,
-    addProductToWishList,
-    deleteProductToWishList,
-    addProductToCart,
-    addToCart,
-    deleteProductFromCart
+    products,
+    state,
+    dispatch,
   };
 
   return (

@@ -84,14 +84,8 @@ function Navbar() {
           </div>
           <div className="cart  flex text-3xl text-gray-500 items-center gap-3 justify-evenly">
             <Link to="/wishlist">
-            {
-              wishList.length > 0?(
-                <FaHeart  className="text-green-600"/>
-              ):
-              (
-                <IoHeartOutline />
-              )
-            }</Link>
+              <FaHeart className="text-green-600" />
+            </Link>
             <Link to="/cart">
               <IoBagOutline />
             </Link>
