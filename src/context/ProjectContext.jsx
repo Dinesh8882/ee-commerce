@@ -16,9 +16,17 @@ function ProdectContext({ children }) {
     wishlistOrCartInitialState
   );
 
-  const subtotal = state.cart.reduce((sum, product) => Number(sum + product.totalPrice), 0)
+  // const sum = 0;
+  const total = state.cart.map((item)=>  item.totalPrice )
 
-  const disCountTotal = Math.floor(subtotal * 0.95);
+  const subtotal = total.reduce((acc, val) => acc + parseFloat(val), 0).toFixed(1);
+
+  const disCount = (subtotal * (1 -  0.05)).toFixed(1)
+  console.log(subtotal);
+
+
+
+  console.log(state.cart);
 
 
   const values = {
@@ -32,7 +40,7 @@ function ProdectContext({ children }) {
     state,
     dispatch,
     subtotal,
-    disCountTotal,
+    disCount,
   };
 
   return (

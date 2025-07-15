@@ -16,9 +16,8 @@ function Card({
   inWishList,
   addToWishList,
   item,
+  deletedWishList,
 }) {
- 
-
   return (
     <div
       key={index}
@@ -39,15 +38,18 @@ function Card({
         />
         <div className=" absolute flex justify-center items-center opacity-0 top-0 left-0 w-full h-full group-hover:opacity-100 z-10">
           {inWishList ? (
-            <div className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full">
+            <div
+              onClick={() => deletedWishList(item)}
+              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
+            >
               <TiHeartFullOutline className="text-red-400" />
             </div>
           ) : (
-            <div className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full">
-              <FaRegHeart
-                onClick={() => addToWishList(item)}
-                className="text-green-400"
-              />
+            <div
+              onClick={() => addToWishList(item)}
+              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
+            >
+              <FaRegHeart className="text-green-400" />
             </div>
           )}
         </div>

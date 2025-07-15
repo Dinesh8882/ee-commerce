@@ -24,7 +24,7 @@ import { ContextProduct } from "../context/ProjectContext";
 
 function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
-  const { token, wishList } = useContext(ContextProduct);
+  const { token, state } = useContext(ContextProduct);
 
   return (
     <div className="">
@@ -83,9 +83,15 @@ function Navbar() {
             </div>
           </div>
           <div className="cart  flex text-3xl text-gray-500 items-center gap-3 justify-evenly">
-            <Link to="/wishlist">
-              <FaHeart className="text-green-600" />
-            </Link>
+            {state.wishlist.length > 0 ? (
+              <Link to="/wishlist">
+                <FaHeart className="text-green-600" />
+              </Link>
+            ) : (
+              <Link to="/wishlist">
+                <IoHeartOutline className="" />
+              </Link>
+            )}
             <Link to="/cart">
               <IoBagOutline />
             </Link>

@@ -9,7 +9,7 @@ import ApplyCoupan from "./ApplyCoupon";
 import { ContextProduct } from "../context/ProjectContext";
 
 function Cart() {
-  const { subtotal, disCountTotal } = useContext(ContextProduct);
+  const { subtotal, disCount } = useContext(ContextProduct);
 
   return (
     <div>
@@ -69,7 +69,7 @@ function Cart() {
                 Total{" "}
               </p>
               <p className="flex-1 px-2 flex items-center text-[#088178] font-bold text-[18px]">
-                ${disCountTotal}
+                ${disCount}
               </p>
             </div>
           </div>

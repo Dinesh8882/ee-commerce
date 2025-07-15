@@ -39,6 +39,7 @@ function CartList() {
 
       {state.cart.length > 0 ? (
         state.cart.map((item, index) => {
+          
           return (
             <div
               key={index}
