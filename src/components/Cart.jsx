@@ -8,9 +8,12 @@ import SubButton from "./SubButton";
 import ApplyCoupan from "./ApplyCoupon";
 import { ContextProduct } from "../context/ProjectContext";
 
+import { toast } from "react-toastify";
+
 function Cart() {
   const { subtotal, disCount } = useContext(ContextProduct);
 
+   
   return (
     <div>
       <CartList />

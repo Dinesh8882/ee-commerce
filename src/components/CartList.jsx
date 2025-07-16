@@ -2,12 +2,17 @@ import React, { useContext } from "react";
 import { ContextProduct } from "../context/ProjectContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
+import { toast } from "react-toastify";
+
 function CartList() {
   const { state, dispatch } = useContext(ContextProduct);
 
   const deleteProduct = (product) => {
+  if (state.cart.some(item => item.id === product.id)) {
     dispatch({ type: "DELETE_FROM_CART", payload: product });
-  };
+    toast.success("Item deleted successfully!");
+  }
+};
 
   const increaseQuantity = (id, quantity) => {
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
@@ -39,7 +44,6 @@ function CartList() {
 
       {state.cart.length > 0 ? (
         state.cart.map((item, index) => {
-          
           return (
             <div
               key={index}

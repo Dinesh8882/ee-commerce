@@ -4,15 +4,26 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiShoppingBag } from "react-icons/bi";
 import { ContextProduct } from "../context/ProjectContext";
 
+import { toast } from "react-toastify";
+
 function WishlistItems() {
   const { state, dispatch } = useContext(ContextProduct);
 
   const deleteProduct = (product) => {
-    dispatch({ type: "DELETE_FROM_WISHLIST", payload: product });
+    if(state.wishlist.some((item)=>item.id === product.id)){
+      dispatch({ type: "DELETE_FROM_WISHLIST", payload: product });
+      toast.success("Item deleted successfully!")
+    }
+    
   };
 
   const addToCart = (product) => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
+    if (!state.cart.some((item) => item.id === product.id)) {
+      dispatch({ type: "ADD_TO_CART", payload: product });
+      toast.success("Added to cart successfully!");
+    } else {
+      toast.error("Already Added!");
+    }
   };
 
   return (
