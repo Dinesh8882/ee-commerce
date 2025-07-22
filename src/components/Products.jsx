@@ -1,33 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
 import axios from "axios";
 import fectedData from "../utils/fetchedData";
 
+import { useSelector, useDispatch } from "react-redux";
+import { addToWishList, deleteToWishList } from "../features/wishlistSlice";
 import Card from "./Card";
-import { ContextProduct } from "../context/ProjectContext";
 import { toast } from "react-toastify";
+import { products } from "../assets/data";
 
 function Cards() {
-  const { products, state, dispatch } = useContext(ContextProduct);
 
-  const addToWishList = (product) => {
-    if(!state.wishlist.some((item)=>item.id === product.id)){
-      dispatch({ type: "ADD_TO_WISHLIST", payload: product });
-      toast.success("Added to Favourite successfully!")
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.wishList);
+
+  const addProductToWishList = (product) => {
+    if (!state.wishList.some((item) => item.id === product.id)) {
+      dispatch(addToWishList(product));
+      toast.success("Added to Favourite successfully!");
     }
   };
 
-  const deletedWishList = (product) => {
-    if(state.wishlist.some((item)=>item.id === product.id)){
-      dispatch({ type: "DELETE_FROM_WISHLIST", payload: product });
+  const deletedWishList = (id) => {
+    if(state.wishList.some((item)=>item.id === id)){
+     dispatch(deleteToWishList(id))
       toast.success("Deleted successfully!")
     }
-
   };
   return (
     <div className="grid gap-8 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4">
       {products.map((item, index) => {
-        const isInWishList = state.wishlist.some((wish) => wish.id === item.id);
-
+        const isInWishList = state.wishList.some((wish) => wish.id === item.id);
         return (
           <Card
             key={item.id}
@@ -41,7 +43,7 @@ function Cards() {
             categories={item.category}
             itemId={item.id}
             inWishList={isInWishList}
-            addToWishList={addToWishList}
+            addToWishList={addProductToWishList}
             deletedWishList={deletedWishList}
           />
         );

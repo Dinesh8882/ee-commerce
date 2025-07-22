@@ -4,7 +4,6 @@ import SliderButton from "./SliderButton";
 
 function PopularCategories() {
   const scrollRef = useRef(null);
-  // const [translate, setTranslate] = useState(0);
   const [count, setCount] = useState(0);
 
   const extraCategories = [
@@ -19,7 +18,7 @@ function PopularCategories() {
 
     const cardWidth = cards[0].getBoundingClientRect().width;
     container.scrollBy({
-      left: cardWidth + 20, // 16 = gap-4 (1rem)
+      left: cardWidth + 20, 
       behavior: "smooth",
     });
   };

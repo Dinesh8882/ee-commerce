@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import Slider from "../../components/Slider";
 import Services from "../../components/Services";
 import Buttons from "../../components/Buttons";
@@ -10,15 +10,13 @@ import SliderButton from "../../components/SliderButton";
 import DealOfTheDay from "../../components/DealOfTheDay";
 import NewArrivals from "../../components/NewArrivals";
 import BestSell from "../../components/BestSell";
-import { ContextProduct } from "../../context/ProjectContext";
 
 function Home() {
 
-  const {token ,setToken} = useContext(ContextProduct)
   
-  useEffect(()=>{
-    setToken(localStorage.getItem("token"))
-  },[token])
+  // useEffect(()=>{
+  //   setToken(localStorage.getItem("token"))
+  // },[token])
 
   
   return (

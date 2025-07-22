@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import { ContextProduct } from "../context/ProjectContext";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginProtected({ children }) {
-  const { token } = useContext(ContextProduct);
+  const [token,setToken] = useState("")
   const navigate = useNavigate();
   
   useEffect(() => {

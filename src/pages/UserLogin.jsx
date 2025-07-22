@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SubButton from "../components/SubButton";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
-import { ContextProduct } from "../context/ProjectContext";
 
 function UserLogin() {
-  const { token, setToken } = useContext(ContextProduct);
   const navigate = useNavigate();
 
   const [data, setData] = useState({

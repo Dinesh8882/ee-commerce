@@ -1,25 +1,30 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiShoppingBag } from "react-icons/bi";
-import { ContextProduct } from "../context/ProjectContext";
 
 import { toast } from "react-toastify";
 
-function WishlistItems() {
-  const { state, dispatch } = useContext(ContextProduct);
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart  } from "../features/cartSlice";
+import { deleteToWishList } from "../features/wishlistSlice";
 
-  const deleteProduct = (product) => {
-    if(state.wishlist.some((item)=>item.id === product.id)){
-      dispatch({ type: "DELETE_FROM_WISHLIST", payload: product });
-      toast.success("Item deleted successfully!")
+function WishlistItems() {
+  
+  const wishlist = useSelector((state)=>state.wishList.wishList)
+  const cart = useSelector((state)=>state.cart.cart)
+  const dispatch = useDispatch();
+
+  const deleteProduct = (id) => {
+    if (wishlist.some((item) => item.id === id)) {
+      dispatch(deleteToWishList(id))
+      toast.success("Item deleted successfully!");
     }
-    
   };
 
-  const addToCart = (product) => {
-    if (!state.cart.some((item) => item.id === product.id)) {
-      dispatch({ type: "ADD_TO_CART", payload: product });
+  const addProductToCart = (product) => {
+    if (!cart.some((item) => item.id === product.id)) {
+      dispatch(addToCart(product))
       toast.success("Added to cart successfully!");
     } else {
       toast.error("Already Added!");
@@ -48,8 +53,8 @@ function WishlistItems() {
           </p>
         </div>
       </div>
-      {state.wishlist.length > 0 ? (
-        state.wishlist.map((item, index) => {
+      {wishlist.length > 0 ? (
+        wishlist.map((item, index) => {
           return (
             <div
               key={index}
@@ -79,7 +84,7 @@ function WishlistItems() {
               </div>
               <div className="col-span-2 flex items-center justify-center border border-y-0 border-gray-300">
                 <div
-                  onClick={() => addToCart(item)}
+                  onClick={() => addProductToCart(item)}
                   className="flex gap-1 items-center justify-center active:bg-[#448b87] bg-[#088178] text-white px-6 rounded-sm cursor-pointer hover:bg-[#325553] py-2"
                 >
                   <BiShoppingBag />
@@ -88,7 +93,7 @@ function WishlistItems() {
               </div>
               <div className="col-span-1 flex items-center justify-center ">
                 <RiDeleteBin6Line
-                  onClick={() => deleteProduct(item)}
+                  onClick={() => deleteProduct(item.id)}
                   className="cursor-pointer active:text-red-800"
                 />
               </div>

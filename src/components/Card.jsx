@@ -39,7 +39,7 @@ function Card({
         <div className=" absolute flex justify-center items-center opacity-0 top-0 left-0 w-full h-full group-hover:opacity-100 z-10">
           {inWishList ? (
             <div
-              onClick={() => deletedWishList(item)}
+              onClick={() => deletedWishList(item.id)}
               className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
             >
               <TiHeartFullOutline className="text-red-400" />

@@ -1,21 +1,22 @@
-import React, { useContext } from "react";
-import { ContextProduct } from "../context/ProjectContext";
+import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteToCart, increaseQuantity } from "../features/cartSlice";
 
 function CartList() {
-  const { state, dispatch } = useContext(ContextProduct);
+  const state = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const deleteProduct = (id) => {
+    if (state.cart.some((item) => item.id === id)) {
+      dispatch(deleteToCart(id));
+      toast.success("Item deleted successfully!");
+    }
+  };
 
-  const deleteProduct = (product) => {
-  if (state.cart.some(item => item.id === product.id)) {
-    dispatch({ type: "DELETE_FROM_CART", payload: product });
-    toast.success("Item deleted successfully!");
-  }
-};
-
-  const increaseQuantity = (id, quantity) => {
-    dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
+  const increaseProductQuantity = (id, quantity) => {
+    dispatch(increaseQuantity({id, quantity}));
   };
   return (
     <div className="mt-[4rem]">
@@ -44,6 +45,7 @@ function CartList() {
 
       {state.cart.length > 0 ? (
         state.cart.map((item, index) => {
+          console.log(item);
           return (
             <div
               key={index}
@@ -73,17 +75,17 @@ function CartList() {
                   value={item.quantity}
                   min={1}
                   onChange={(e) =>
-                    increaseQuantity(item.id, Number(e.target.value))
+                    increaseProductQuantity(item.id, Number(e.target.value))
                   }
                   className="border border-gray-300  w-16 outline-none px-2 py-3"
                 />
               </div>
               <div className="col-span-1 flex items-center justify-center border border-y-0 border-gray-300">
-                {item.totalPrice}
+                {item.subTotale}
               </div>
               <div className="col-span-1 flex items-center justify-center ">
                 <RiDeleteBin6Line
-                  onClick={() => deleteProduct(item)}
+                  onClick={() => deleteProduct(item.id)}
                   className="cursor-pointer active:text-red-800"
                 />
               </div>

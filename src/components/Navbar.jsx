@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { LuSmartphone } from "react-icons/lu";
 import {
   IoLocationOutline,
@@ -20,12 +20,12 @@ import { LuHeadset } from "react-icons/lu";
 import logo from "../assets/logo.svg";
 import menu_img from "../assets/menu-banner.jpg";
 import { Link } from "react-router-dom";
-import { ContextProduct } from "../context/ProjectContext";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
-  const { token, state } = useContext(ContextProduct);
 
+  const state = useSelector((state)=>state.wishList)
   return (
     <div className="">
       <header className="">
@@ -48,7 +48,7 @@ function Navbar() {
                   <option value="hindi">Hindi</option>
                 </select>
               </div>
-              {!token && (
+              {/* {!token && (
                 <p className="flex items-center px-3">
                   <FiUser />
                   <span>
@@ -56,7 +56,7 @@ function Navbar() {
                     <Link to="/user/register">Sign Up</Link>
                   </span>
                 </p>
-              )}
+              )} */}
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ function Navbar() {
             </div>
           </div>
           <div className="cart  flex text-3xl text-gray-500 items-center gap-3 justify-evenly">
-            {state.wishlist.length > 0 ? (
+            {state.wishList.length > 0 ? (
               <Link to="/wishlist">
                 <FaHeart className="text-green-600" />
               </Link>
@@ -99,11 +99,11 @@ function Navbar() {
               className="md:hidden "
               onClick={() => setOpenNavbar(!openNavbar)}
             />
-            {token && (
+            {/* {token && (
               <Link to="/user/profile">
                 <IoPersonCircleOutline />
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       </header>

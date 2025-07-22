@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import img from "../assets/product-1-1.jpg";
 import { products } from "../assets/data";
 import Card from "./Card";
 

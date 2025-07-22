@@ -2,7 +2,6 @@ import React, { lazy } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/auth/Home";
-import ProdectContext from "./context/ProjectContext";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import Checkout from "./pages/Checkout";
@@ -61,11 +60,9 @@ function Layout() {
 function App() {
   return (
     <div>
-      <ProdectContext>
         <BrowserRouter>
           <Layout />
         </BrowserRouter>
-      </ProdectContext>
     </div>
   );
 }

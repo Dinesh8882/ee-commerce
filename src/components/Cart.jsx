@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { HiFingerPrint } from "react-icons/hi2";
 import { TiArrowShuffle } from "react-icons/ti";
 import { AiFillCalendar } from "react-icons/ai";
@@ -6,14 +6,12 @@ import CartList from "./CartList";
 
 import SubButton from "./SubButton";
 import ApplyCoupan from "./ApplyCoupon";
-import { ContextProduct } from "../context/ProjectContext";
-
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 function Cart() {
-  const { subtotal, disCount } = useContext(ContextProduct);
+  const cartTotalPrice = useSelector((state) => state.cart.cartTotal);
 
-   
+
   return (
     <div>
       <CartList />
@@ -58,7 +56,7 @@ function Cart() {
                 Cart Subtotal{" "}
               </p>
               <p className="flex-1 px-2 flex items-center text-[#088178] font-bold text-[18px]">
-                ${subtotal} - 5% Dis
+                ${cartTotalPrice} - 5% Dis
               </p>
             </div>
             <div className="flex border-y border-t-0  justify-between  border-gray-200">
@@ -72,7 +70,7 @@ function Cart() {
                 Total{" "}
               </p>
               <p className="flex-1 px-2 flex items-center text-[#088178] font-bold text-[18px]">
-                ${disCount}
+                ${(cartTotalPrice - (cartTotalPrice*(5/100))).toFixed(0)}
               </p>
             </div>
           </div>

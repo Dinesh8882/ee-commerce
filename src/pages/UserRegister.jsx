@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { ContextProduct } from "../context/ProjectContext";
 
 function UserRegister() {
   const [passwordHide, setPasswordHide] = useState(true);
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState({});
   const navigate = useNavigate()
-  const {token,setToken} = useContext(ContextProduct)
+  const [token,setToken] = useState("")
 
   const url = import.meta.env.VITE_REACT_APP_API_URL;
 

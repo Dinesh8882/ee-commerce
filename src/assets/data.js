@@ -61,9 +61,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 238.85,
+    cartSubTotale: 238.85
   },
   {
     id: 2,
@@ -89,9 +88,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 138.85,
+    cartSubTotale: 138.85
   },
   {
     id: 3,
@@ -117,9 +115,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 338.85,
+    cartSubTotale: 338.85
   },
   {
     id: 4,
@@ -145,9 +142,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 123.85,
+    cartSubTotale: 123.85
   },
   {
     id: 5,
@@ -173,9 +169,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 123.85,
+    cartSubTotale: 123.85
   },
   {
     id: 6,
@@ -201,9 +196,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 238.85,
+    cartSubTotale: 238.85
   },
   {
     id: 7,
@@ -229,9 +223,8 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 1275.85,
+    cartSubTotale: 1275.85
   },
   {
     id: 8,
@@ -257,11 +250,11 @@ const products = [
     inCart: false,
     inWishList: false,
     quantity: 1,
-    subTotale: 1,
-    cartSubTotale: 1
-
+    subTotale: 238.85,
+    cartSubTotale: 238.85
   },
-]
+];
+
 
 // Categries Data 
 const categories = [

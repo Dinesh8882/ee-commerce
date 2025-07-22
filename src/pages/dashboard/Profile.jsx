@@ -1,15 +1,14 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { ContextProduct } from "../../context/ProjectContext";
 import img from "../../assets/tushar.jpeg";
 import { toast } from "react-toastify";
 
 function Profile() {
   const userData = JSON.parse(localStorage.getItem("userData")) || {};
   const url = import.meta.env.VITE_REACT_APP_API_URL;
-  const { token, setToken } = useContext(ContextProduct);
   const [enable, setEnable] = useState(true);
+  const [token,setToken] = useState("")
 
   const [updateData, setUpdataData] = useState(userData);
 
