@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "../../components/Slider";
 import Services from "../../components/Services";
 import Buttons from "../../components/Buttons";
@@ -11,20 +11,42 @@ import DealOfTheDay from "../../components/DealOfTheDay";
 import NewArrivals from "../../components/NewArrivals";
 import BestSell from "../../components/BestSell";
 
-function Home() {
+import { products, populers_products } from "../../assets/data";
 
-  
+function Home() {
+  const [activeButton, setActiveButton] = useState("featured");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   // useEffect(()=>{
-  //   setToken(localStorage.getItem("token"))
+  //  setToken(localStorage.getItem("token"))
   // },[token])
 
-  
+  const buttons = [
+    { btn: "Featured" },
+    { btn: "Popular" },
+    { btn: "New added" },
+  ];
+
+  useEffect(() => {
+    if (activeButton === "featured") {
+      setFilteredProducts(products);
+    } else if (activeButton === "popular") {
+      setFilteredProducts(populers_products);
+    }
+  }, [activeButton]);
+
   return (
     <div>
       <Slider />
       <Services />
-      <Buttons viewMore="View More" isfalse={false} />
-      <Cards />
+      <Buttons
+        buttons={buttons}
+        setActiveButton={setActiveButton}
+        activeButton={activeButton}
+        viewMore="View More"
+        isfalse={false}
+      />
+      <Cards filteredProducts={filteredProducts} />
       <ServicesBanner />
       <PopularCategories />
       <Banner />

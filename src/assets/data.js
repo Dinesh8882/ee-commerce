@@ -35,6 +35,244 @@ import banner_1 from './banner-1.png'
 import banner_2 from './banner-2.png'
 import banner_3 from './banner-3.png'
 
+// populer product
+import populer_1 from './populer-1-1.jpg'
+import populer_1_2 from './populer-1-2.jpg'
+import populer_2 from './populer-2-1.jpg'
+import populer_2_1 from './populer-2-2.jpg'
+import populer_3 from './populer-3-1.jpg'
+import populer_3_2 from './populer-3-2.jpg'
+import populer_4 from './populer-4-1.jpg'
+import populer_4_2 from './populer-4-2.jpg'
+import populer_5 from './populer-5-1.jpg'
+import populer_5_2 from './populer-5-2.jpg'
+import populer_6 from './populer-6-1.jpg'
+import populer_6_2 from './populer-6-2.jpg'
+import populer_7 from './populer-7-1.jpg'
+import populer_7_2 from './populer-7-2.jpg'
+import populer_8 from './populer-8-1.jpg'
+import populer_8_2 from './populer-8-2.jpg'
+
+// Populer product
+const populers_products = [
+  {
+    id: 1,
+    tag: {
+      name: "Hot",
+      bgColor: "#ff75a0"
+    },
+    category: "Clothing",
+    title: "Flowers Sleeve Lapel Shirt",
+    rating: {
+      stars: "⭐⭐⭐⭐☆",
+      percentage: "90%"
+    },
+    price: {
+      current: 238.85,
+      original: 245.80
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_1,
+      back_img: populer_1_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 238.85,
+    cartSubTotale: 238.85
+  },
+  {
+    id: 2,
+    tag: {
+      name: "New",
+      bgColor: "#99bbad"
+    },
+    category: "Clothing",
+    title: "Plain Color Pocket Shirts",
+    rating: {
+      stars: "⭐⭐⭐⭐☆",
+      percentage: "50%"
+    },
+    price: {
+      current: 138.85,
+      original: 255.80
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_2,
+      back_img: populer_2_1
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 138.85,
+    cartSubTotale: 138.85
+  },
+  {
+    id: 3,
+    tag: {
+      name: "Best Sell",
+      bgColor: "#ffab73"
+    },
+    category: "Shirts",
+    title: "Vintage Floral Oil Shirts",
+    rating: {
+      stars: "⭐⭐⭐⭐☆",
+      percentage: "90%"
+    },
+    price: {
+      current: 338.85,
+      original: 455.80
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_3,
+      back_img: populer_3_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 338.85,
+    cartSubTotale: 338.85
+  },
+  {
+    id: 4,
+    tag: {
+      name: "Sale",
+      bgColor: "#a1cae2"
+    },
+    category: "Shirt",
+    title: "Flowers Sleeve Lapel Shirt",
+    rating: {
+      stars: "⭐⭐⭐⭐☆",
+      percentage: "70%"
+    },
+    price: {
+      current: 123.85,
+      original: 235.8
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_4,
+      back_img: populer_4_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 123.85,
+    cartSubTotale: 123.85
+  },
+  {
+    id: 5,
+    tag: {
+      name: "-30%",
+      bgColor: "#ff75a0"
+    },
+    category: "Clothing",
+    title: "Colorful Hawaiian Shirts",
+    rating: {
+      stars: "⭐⭐⭐☆☆",
+      percentage: "90%"
+    },
+    price: {
+      current: 123.85,
+      original: 235.8
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_5,
+      back_img: populer_5_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 123.85,
+    cartSubTotale: 123.85
+  },
+  {
+    id: 6,
+    tag: {
+      name: "-22%",
+      bgColor: "#ff75a0"
+    },
+    category: "Clothing",
+    title: "Ethnic Floral Casual Shirts",
+    rating: {
+      stars: "⭐⭐⭐☆☆",
+      percentage: "70%"
+    },
+    price: {
+      current: 238.85,
+      original: 245.8
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_6,
+      back_img: populer_6_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 238.85,
+    cartSubTotale: 238.85
+  },
+  {
+    id: 7,
+    tag: {
+      name: "New",
+      bgColor: "#ffab73"
+    },
+    category: "Shoes",
+    title: "Stitching Hole Sandals",
+    rating: {
+      stars: "⭐⭐⭐☆☆",
+      percentage: "98%"
+    },
+    price: {
+      current: 1275.85,
+      original: null
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_7,
+      back_img: populer_7_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 1275.85,
+    cartSubTotale: 1275.85
+  },
+  {
+    id: 8,
+    tag: {
+      name: undefined,
+      bgColor: undefined
+    },
+    category: "Shirt",
+    title: "Mens Porcelain Shirt",
+    rating: {
+      stars: "⭐⭐⭐☆☆",
+      percentage: "70%"
+    },
+    price: {
+      current: 238.85,
+      original: 245.8
+    },
+    isDiscounted: true,
+    imageUrl: {
+      front_img: populer_8,
+      back_img: populer_8_2
+    },
+    inCart: false,
+    inWishList: false,
+    quantity: 1,
+    subTotale: 238.85,
+    cartSubTotale: 238.85
+  },
+];
+
 // Products data
 const products = [
   {
@@ -348,5 +586,6 @@ export {
   products,
   categories,
   banners,
-  dealOfTheDay
+  dealOfTheDay,
+  populers_products
 }
