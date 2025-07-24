@@ -56,7 +56,7 @@ import populer_8_2 from './populer-8-2.jpg'
 // Populer product
 const populers_products = [
   {
-    id: 1,
+    id: 9,
     tag: {
       name: "Hot",
       bgColor: "#ff75a0"
@@ -83,7 +83,7 @@ const populers_products = [
     cartSubTotale: 238.85
   },
   {
-    id: 2,
+    id: 10,
     tag: {
       name: "New",
       bgColor: "#99bbad"
@@ -110,7 +110,7 @@ const populers_products = [
     cartSubTotale: 138.85
   },
   {
-    id: 3,
+    id: 11,
     tag: {
       name: "Best Sell",
       bgColor: "#ffab73"
@@ -137,7 +137,7 @@ const populers_products = [
     cartSubTotale: 338.85
   },
   {
-    id: 4,
+    id: 12,
     tag: {
       name: "Sale",
       bgColor: "#a1cae2"
@@ -164,7 +164,7 @@ const populers_products = [
     cartSubTotale: 123.85
   },
   {
-    id: 5,
+    id: 13,
     tag: {
       name: "-30%",
       bgColor: "#ff75a0"
@@ -191,7 +191,7 @@ const populers_products = [
     cartSubTotale: 123.85
   },
   {
-    id: 6,
+    id: 14,
     tag: {
       name: "-22%",
       bgColor: "#ff75a0"
@@ -218,7 +218,7 @@ const populers_products = [
     cartSubTotale: 238.85
   },
   {
-    id: 7,
+    id: 15,
     tag: {
       name: "New",
       bgColor: "#ffab73"
@@ -245,7 +245,7 @@ const populers_products = [
     cartSubTotale: 1275.85
   },
   {
-    id: 8,
+    id: 16,
     tag: {
       name: undefined,
       bgColor: undefined

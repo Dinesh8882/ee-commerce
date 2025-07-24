@@ -14,7 +14,7 @@ function Card({
   ratingPre,
   itemPrice,
   inWishList,
-  addToWishList,
+  addProductInWishlist,
   item,
   deletedWishList,
 }) {
@@ -46,7 +46,7 @@ function Card({
             </div>
           ) : (
             <div
-              onClick={() => addToWishList(item)}
+              onClick={() => addProductInWishlist(item)}
               className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
             >
               <FaRegHeart className="text-green-400" />

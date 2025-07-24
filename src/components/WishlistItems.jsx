@@ -6,25 +6,24 @@ import { BiShoppingBag } from "react-icons/bi";
 import { toast } from "react-toastify";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart  } from "../features/cartSlice";
+import { addToCart } from "../features/cartSlice";
 import { deleteToWishList } from "../features/wishlistSlice";
 
 function WishlistItems() {
-  
-  const wishlist = useSelector((state)=>state.wishList.wishList)
-  const cart = useSelector((state)=>state.cart.cart)
+  const wishlist = useSelector((state) => state.wishList.wishList);
+  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
 
   const deleteProduct = (id) => {
     if (wishlist.some((item) => item.id === id)) {
-      dispatch(deleteToWishList(id))
+      dispatch(deleteToWishList(id));
       toast.success("Item deleted successfully!");
     }
   };
 
   const addProductToCart = (product) => {
     if (!cart.some((item) => item.id === product.id)) {
-      dispatch(addToCart(product))
+      dispatch(addToCart(product));
       toast.success("Added to cart successfully!");
     } else {
       toast.error("Already Added!");
@@ -55,6 +54,7 @@ function WishlistItems() {
       </div>
       {wishlist.length > 0 ? (
         wishlist.map((item, index) => {
+          const inCartList = cart.some((product) => product.id === item.id);
           return (
             <div
               key={index}
@@ -85,10 +85,14 @@ function WishlistItems() {
               <div className="col-span-2 flex items-center justify-center border border-y-0 border-gray-300">
                 <div
                   onClick={() => addProductToCart(item)}
-                  className="flex gap-1 items-center justify-center active:bg-[#448b87] bg-[#088178] text-white px-6 rounded-sm cursor-pointer hover:bg-[#325553] py-2"
+                  className={`flex gap-1 items-center justify-center ${
+                    inCartList
+                      ? "bg-green-950"
+                      : "bg-[#088178] hover:bg-[#325553] active:bg-[#448b87] "
+                  } text-white px-6 rounded-sm cursor-pointer  py-2`}
                 >
                   <BiShoppingBag />
-                  Add to cart
+                  {inCartList ? "Added" : "Add to cart"}
                 </div>
               </div>
               <div className="col-span-1 flex items-center justify-center ">

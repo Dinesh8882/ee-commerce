@@ -33,6 +33,9 @@ function Home() {
     } else if (activeButton === "popular") {
       setFilteredProducts(populers_products);
     }
+    else{
+      setFilteredProducts([])
+    }
   }, [activeButton]);
 
   return (
