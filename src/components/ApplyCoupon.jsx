@@ -6,12 +6,12 @@ function ApplyCoupan() {
   return (
     <div>
       <div className="coupon ">
-        <h3 className="text-xl">Apply Coupon</h3>
-        <div className="input flex items-center gap-6">
+        <h3 className="text-xl my-4 md:my-0">Apply Coupon</h3>
+        <div className="input flex flex-col md:flex-row  md:items-center md:gap-6">
           <input
             type="text"
             placeholder="Enter your coupon"
-            className="w-3xs px-4 py-2 rounded-sm outline-none border border-gray-200"
+            className="md:w-3xs w-full px-4 py-2 rounded-sm outline-none border border-gray-200"
           />
           <div>
             <SubButton icon={<BsClipboard2 />} btnName="Apply" />

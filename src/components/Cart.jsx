@@ -21,7 +21,7 @@ function Cart() {
         <div className="h-[2px] flex-1 bg-gray-200" />
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="md:grid flex flex-col md:grid-cols-2 gap-6">
         <div className="left">
           <h2 className="text-xl">Calculate Shipping</h2>
           <p className="my-4 text-[15px]">
@@ -33,7 +33,7 @@ function Cart() {
               <option value="Philippines">Philippines</option>
             </select>
           </div>
-          <div className="flex gap-6 my-4">
+          <div className="flex flex-col md:flex-row gap-6 my-4">
             <input
               type="text"
               className="outline-none border border-gray-300 px-3 py-3 rounded-sm flex-1"

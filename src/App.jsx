@@ -19,7 +19,7 @@ function Layout() {
   return (
     <div className="">
       <Navbar />
-      <div className="sm:px-[2rem] px-[1rem] md:px-[6rem]">
+      <div className="sm:px-[2rem] px-[1rem] lg:px-[6rem] md:px-[1rem]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/wishlist" element={<Wishlist />} />

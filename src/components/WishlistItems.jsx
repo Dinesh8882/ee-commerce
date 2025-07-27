@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 import { deleteToWishList } from "../features/wishlistSlice";
 
+import { products } from "../assets/data";
+
 function WishlistItems() {
   const wishlist = useSelector((state) => state.wishList.wishList);
   const cart = useSelector((state) => state.cart.cart);
@@ -33,7 +35,7 @@ function WishlistItems() {
   return (
     <div className="mt-[4rem]">
       <div>
-        <div className="head_line grid grid-cols-12 ">
+        <div className="head_line md:grid md:grid-cols-12 hidden">
           <p className="text-center col-span-6 border border-r-0 border-gray-300 py-3 font-bold text-gray-800">
             Product
           </p>
@@ -58,10 +60,14 @@ function WishlistItems() {
           return (
             <div
               key={index}
-              className="grid grid-cols-12 border border-t-0 border-gray-300"
+              className={`md:grid gap-[.4rem] md:gap-0 flex items-stretch flex-col md:flex-none md:items-stretch md:grid-cols-12 ${
+                index === 0 ? "border-t-1" : "border-t-0"
+              } border  border-gray-300`}
             >
-              <div className={`col-span-6 flex`}>
-                <div className="py-3 px-6 border-r border-gray-300">
+              <div
+                className={`md:col-span-6 flex flex-col items-center border-b-1 w-full md:border-b-0 md:w-none border-gray-300 md:flex-row gap-[0.5rem] md:gap-0`}
+              >
+                <div className="py-3 px-6 md:border-r border-gray-300">
                   <img
                     src={item.imageUrl.front_img}
                     alt="product"
@@ -75,14 +81,16 @@ function WishlistItems() {
                   {/* <p className="text-gray-600">Maboriosam in a tontos.</p> */}
                 </div>
               </div>
-              <div className="col-span-1 border-x border-r-0 border-gray-300 text-center flex items-center justify-center">
+
+              <div className="md:col-span-1 md:border-x md:border-r-0 border-b-1 md:border-b-0 border-gray-300 text-center flex items-center justify-center">
                 ${item.price.current}
               </div>
 
-              <div className="col-span-2 text-center flex items-center justify-center border-x border-r-0 border-gray-300">
+              <div className="md:col-span-2 text-center flex items-center border-b-1 md:border-b-0 justify-center md:border-x md:border-r-0 border-gray-300">
                 <p>In Stock</p>
               </div>
-              <div className="col-span-2 flex items-center justify-center border border-y-0 border-gray-300">
+
+              <div className="md:col-span-2 flex items-center  justify-center py-[1rem] border-b-1 md:border-b-0 border border-y-0 border-gray-300">
                 <div
                   onClick={() => addProductToCart(item)}
                   className={`flex gap-1 items-center justify-center ${
@@ -95,7 +103,8 @@ function WishlistItems() {
                   {inCartList ? "Added" : "Add to cart"}
                 </div>
               </div>
-              <div className="col-span-1 flex items-center justify-center ">
+
+              <div className="md:col-span-1 my-[1rem] flex items-center  justify-center ">
                 <RiDeleteBin6Line
                   onClick={() => deleteProduct(item.id)}
                   className="cursor-pointer active:text-red-800"
@@ -105,7 +114,9 @@ function WishlistItems() {
           );
         })
       ) : (
-        <p className="text-center text-gray-500 p-3 text-xl border-x border-b border-gray-300">
+        <p
+          className={`text-center text-gray-500 p-3 text-xl border-x  border-t md:border-t-0 border-b  border-gray-300`}
+        >
           No Data
         </p>
       )}

@@ -35,9 +35,9 @@ function Navbar() {
               <p className="flex items-center px-3">
                 <LuSmartphone /> (+01) - 2345-2345
               </p>
-              <p className="flex items-center px-3 font-extrabold text-red-600">
-                {/* <IoLocationOutline /> Our location */}
-                Site is Under Proccess
+              <p className="flex items-center px-3">
+                <IoLocationOutline /> Our location
+                {/* Site is Under Proccess */}
               </p>
             </div>
             <div className="right flex gap-3">
