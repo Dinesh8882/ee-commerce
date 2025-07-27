@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/mainLogo.png";
 import { FaTwitter, FaPinterestP, FaFacebookF } from "react-icons/fa";
 import { SlSocialInstagram } from "react-icons/sl";
 import app_store from "../assets/app-store.jpg";

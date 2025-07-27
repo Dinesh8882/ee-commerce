@@ -4,7 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { MdWindow } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
 
-import logo from "../assets/logo.svg";
+import logo from "../assets/mainLogo.png";
 
 function Navbar({ openNavbar, setOpenNavbar }) {
   const [openNav, setOpenNav] = useState("");

@@ -17,7 +17,7 @@ import { FaHeart } from "react-icons/fa6";
 import ResponsiveNavbar from "../components/ResponsiveNavbar";
 import { LuHeadset } from "react-icons/lu";
 
-import logo from "../assets/logo.svg";
+import logo from "../assets/mainLogo.png";
 import menu_img from "../assets/menu-banner.jpg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
