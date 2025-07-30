@@ -17,9 +17,7 @@ function Home() {
   const [activeButton, setActiveButton] = useState("featured");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // useEffect(()=>{
-  //  setToken(localStorage.getItem("token"))
-  // },[token])
+
 
   const buttons = [
     { btn: "Featured" },
