@@ -49,7 +49,7 @@ function CartList() {
           return (
             <div
               key={index}
-              className={`md:grid md:grid-cols-12 border border-gray-300 flex flex-col md:flex-none gap-3 md:gap-0 ${index === 0 ? "border-t md:border-t-0 border-b-0":"border-b-0"}`}
+              className={`md:grid md:grid-cols-12 border border-gray-300 flex flex-col md:flex-none gap-3 md:gap-0 ${index === 0 ? "border-t md:border-t-0":"border-t-0"}`}
             >
               <div className={`md:col-span-7 flex flex-col border-b border-gray-300 md:border-0 py-3 md:py-0 items-center  md:flex-row`}>
                 <div className="py-3 px-6 md:border-r border-gray-300">

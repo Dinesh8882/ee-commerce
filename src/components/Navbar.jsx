@@ -6,12 +6,11 @@ import {
   IoHeartOutline,
   IoBagOutline,
 } from "react-icons/io5";
-import { FiUser } from "react-icons/fi";
+import { IoBag } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
 import { MdWindow, MdOutlineMenu } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
-import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa6";
 
 import ResponsiveNavbar from "../components/ResponsiveNavbar";
@@ -25,7 +24,9 @@ import { useSelector } from "react-redux";
 function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
 
-  const state = useSelector((state)=>state.wishList)
+  const wishList = useSelector((state) => state.wishList.wishList);
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
   return (
     <div className="">
       <header className="">
@@ -83,7 +84,7 @@ function Navbar() {
             </div>
           </div>
           <div className="cart  flex text-3xl text-gray-500 items-center gap-3 justify-evenly">
-            {state.wishList.length > 0 ? (
+            {wishList.length > 0 ? (
               <Link to="/wishlist">
                 <FaHeart className="text-green-600" />
               </Link>
@@ -92,9 +93,16 @@ function Navbar() {
                 <IoHeartOutline className="" />
               </Link>
             )}
-            <Link to="/cart">
-              <IoBagOutline />
-            </Link>
+            {cart.length > 0 ? (
+              <Link to="/cart">
+                <IoBag className="text-green-600" />
+              </Link>
+            ) : (
+              <Link to="/cart">
+                <IoBagOutline />
+              </Link>
+            )}
+
             <MdOutlineMenu
               className="md:hidden "
               onClick={() => setOpenNavbar(!openNavbar)}
