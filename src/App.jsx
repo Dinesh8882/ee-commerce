@@ -3,11 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/auth/Home";
 import Footer from "./components/Footer";
-import Cart from "./components/Cart";
-import Checkout from "./pages/Checkout";
-
 
 const Wishlist = lazy(() => import("./components/Wishlist"));
+const Cart = lazy(()=> import('./components/Cart'))
 
 function Layout() {
   return (
@@ -18,7 +16,6 @@ function Layout() {
           <Route path="/" element={<Home />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/shop/checkout" element={<Checkout />} />
         </Routes>
         <Footer />
       </div>
