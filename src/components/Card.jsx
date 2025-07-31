@@ -42,14 +42,14 @@ function Card({
               onClick={() => deletedWishList(item.id)}
               className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
             >
-              <TiHeartFullOutline className="text-red-400" />
+              <TiHeartFullOutline className="text-red-400 text-[12px]" />
             </div>
           ) : (
             <div
               onClick={() => addProductInWishlist(item)}
-              className="w-[30px] h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
+              className="w-[30px]  h-[30px] active:bg-[#088178] hover:bg-[#1e3130] hover:text-white bg-white text-[#088178] flex justify-center items-center rounded-full"
             >
-              <FaRegHeart className="text-green-400" />
+              <FaRegHeart className="text-green-400 text-[12px]" />
             </div>
           )}
         </div>
@@ -79,11 +79,28 @@ function Card({
           </span>
         </div>
       </div>
-      {categories && (
-        <p className="bg-[#e8f6ea] border border-gray-300 w-9 h-9 rounded-full flex justify-center items-center absolute bottom-8 right-8">
-          <BsBagDash className=" text-[#198a82] " />
-        </p>
-      )}
+      <div className="flex gap-3 absolute bottom-8 right-8 items-center">
+         {inWishList ? (
+            <div
+              onClick={() => deletedWishList(item.id)}
+              className="w-[30px] bg-[#e8f6ea] h-[30px] border border-gray-300  active:bg-[#088178] hover:bg-[#1e3130] hover:text-white  text-[#088178] flex justify-center items-center rounded-full"
+            >
+              <TiHeartFullOutline className="text-red-400 text-[13px]" />
+            </div>
+          ) : (
+            <div
+              onClick={() => addProductInWishlist(item)}
+              className="w-[30px] bg-[#e8f6ea] h-[30px] active:bg-[#088178] border border-gray-300 hover:bg-[#1e3130] hover:text-white  text-[#088178] flex justify-center items-center rounded-full"
+            >
+              <FaRegHeart className="text-green-400 text-[12px]" />
+            </div>
+          )}
+        {/* {categories && (
+          <p className="bg-[#e8f6ea] border border-gray-300 w-9 h-9 rounded-full flex justify-center items-center ">
+            <BsBagDash className=" text-[#198a82] text-sm" />
+          </p>
+        )} */}
+      </div>
     </div>
   );
 }
