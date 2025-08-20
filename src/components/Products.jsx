@@ -12,12 +12,15 @@ function Cards({ filteredProducts }) {
 
   const addProductInWishlist = (product) => {
     addProductToWishList(product, state, dispatch);
+    // console.log(state);
+    
   };
 
   const deleteProductInWishlist = (id) => {
     deletedWishList(id,state,dispatch)
   };
 
+  
   return (
     <div>
       <div

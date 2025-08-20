@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiShoppingBag } from "react-icons/bi";
@@ -6,15 +6,30 @@ import { BiShoppingBag } from "react-icons/bi";
 import { toast } from "react-toastify";
 
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../features/cartSlice";
+
 import { deleteToWishList } from "../features/wishlistSlice";
 
-import { products } from "../assets/data";
+
+import { addProductThunk, getProductThunk } from "../features/cart/cartThunk";
+import { addToCart } from "../features/cart/cartSlice";
 
 function WishlistItems() {
   const wishlist = useSelector((state) => state.wishList.wishList);
   const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+
+
+  useEffect(() => {
+
+    if (token) {
+      dispatch(getProductThunk());
+    }
+    // else {
+    //   dispatch(clearCart());
+    // }
+  }, [dispatch, token]);
+
 
   const deleteProduct = (id) => {
     if (wishlist.some((item) => item.id === id)) {
@@ -24,10 +39,28 @@ function WishlistItems() {
   };
 
   const addProductToCart = (product) => {
-    if (!cart.some((item) => item.id === product.id)) {
-      dispatch(addToCart(product));
+
+
+
+
+    const alreadyInCart = cart.some((item) => item.id === product.id);
+    const token = localStorage.getItem("token")
+
+
+
+    const prod = {
+      ...product,
+      inCart: true
+    }
+
+    if (!alreadyInCart && token) {
+      dispatch(addToCart(prod))
+      dispatch(addProductThunk({ prod, token }));
       toast.success("Added to cart successfully!");
-    } else {
+    } else if (!token && !alreadyInCart) {
+      dispatch(addToCart(prod))
+    }
+    else {
       toast.error("Already Added!");
     }
   };
@@ -56,13 +89,13 @@ function WishlistItems() {
       </div>
       {wishlist.length > 0 ? (
         wishlist.map((item, index) => {
-          const inCartList = cart.some((product) => product.id === item.id);
+          const inCartList = cart.some((cartItem) => cartItem.id === item.id);
+
           return (
             <div
               key={index}
-              className={`md:grid gap-[.4rem] md:gap-0 flex items-stretch flex-col md:flex-none md:items-stretch md:grid-cols-12 ${
-                index === 0 ? "border-t-1" : "border-t-0"
-              } border  border-gray-300`}
+              className={`md:grid gap-[.4rem] md:gap-0 flex items-stretch flex-col md:flex-none md:items-stretch md:grid-cols-12 ${index === 0 ? "border-t-1" : "border-t-0"
+                } border  border-gray-300`}
             >
               <div
                 className={`md:col-span-6 flex flex-col items-center border-b-1 w-full md:border-b-0 md:w-none border-gray-300 md:flex-row gap-[0.5rem] md:gap-0`}
@@ -93,11 +126,10 @@ function WishlistItems() {
               <div className="md:col-span-2 flex items-center  justify-center py-[1rem] border-b-1 md:border-b-0 border border-y-0 border-gray-300">
                 <div
                   onClick={() => addProductToCart(item)}
-                  className={`flex gap-1 items-center justify-center ${
-                    inCartList
-                      ? "bg-green-950"
-                      : "bg-[#088178] hover:bg-[#325553] active:bg-[#448b87] "
-                  } text-white px-6 rounded-sm cursor-pointer  py-2`}
+                  className={`flex gap-1 items-center justify-center ${inCartList
+                    ? "bg-green-950"
+                    : "bg-[#088178] hover:bg-[#325553] active:bg-[#448b87] "
+                    } text-white px-6 rounded-sm cursor-pointer  py-2`}
                 >
                   <BiShoppingBag />
                   {inCartList ? "Added" : "Add to cart"}

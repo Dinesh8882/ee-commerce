@@ -12,6 +12,7 @@ import NewArrivals from "../../components/NewArrivals";
 import BestSell from "../../components/BestSell";
 
 import { products, populers_products } from "../../assets/data";
+import { useSelector } from "react-redux";
 
 function Home() {
   const [activeButton, setActiveButton] = useState("featured");
@@ -20,6 +21,10 @@ function Home() {
   // useEffect(()=>{
   //  setToken(localStorage.getItem("token"))
   // },[token])
+
+  const { user ,token} = useSelector((state) => state.auth);  
+
+  
 
   const buttons = [
     { btn: "Featured" },

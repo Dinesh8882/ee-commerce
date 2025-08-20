@@ -1,37 +1,53 @@
-import React, { useState, useRef } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import img from "../../assets/tushar.jpeg";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+
+import { logout } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import { updateThunk } from "../../features/auth/authThunk";
+
 
 function Profile() {
-  const userData = JSON.parse(localStorage.getItem("userData")) || {};
-  const url = import.meta.env.VITE_REACT_APP_API_URL;
+  const userData = useSelector((state) => state.auth.user)
+
   const [enable, setEnable] = useState(true);
-  const [token,setToken] = useState("")
+  const token = localStorage.getItem("token")
 
-  const [updateData, setUpdataData] = useState(userData);
+  const [data, setData] = useState(userData);
 
-  console.log(updateData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const onChangeHandler = (e)=>{
-    setUpdataData({...updateData,[e.target.name]:e.target.value})
-  }
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
 
-  const updateHandler = async () => {
-    
+    if (["country", "city", "street"].includes(name)) {
+      setData({
+        ...data,
+        address: {
+          ...data.address,
+          [name]: value,
+        },
+      });
+    } else {
+      setData({ ...data, [name]: value });
+    }
   };
 
-  const logOutHandler = async () => {
-    try {
-      const response = await axios.get(`${url}/user/logout`);
-      if (response.data) {
-        localStorage.clear();
-        setToken("");
-        toast.success("User Logout successfully!");
-        navigate("/");
-      }
-    } catch (error) {}
+  const updateHandler = async () => {
+    const response = await dispatch(updateThunk({ data, token })).unwrap();
+    if (response.success) {
+      localStorage.setItem("userData", JSON.stringify(response.data));
+      toast.success(response.message);
+      setEnable(true);
+    }
+  };
+
+  const logOutProfile = () => {
+    dispatch(logout());
+    localStorage.clear()
+    navigate("/");
   };
 
   return (
@@ -42,18 +58,18 @@ function Profile() {
             <img src={img} className="w-full h-full object-cover" alt="" />
           </div>
           <div>
-            <h2 className="text-center text-2xl font-bold">{updateData.name}</h2>
-            <p className="text-center text-gray-400">{updateData.role}</p>
+            <h2 className="text-center text-2xl font-bold">{data.name}</h2>
+            <p className="text-center text-gray-400">{data.role}</p>
           </div>
           <div className="flex gap-2">
             <button
-              className={`bg-red-500 px-4 py-1 mt-1 text-white cursor-pointer ${
-                updateData.role !== "admin" && "w-full"
-              }`}
+              onClick={logOutProfile}
+              className={`bg-red-500 px-4 py-1 mt-1 text-white cursor-pointer ${data.role !== "admin" && "w-full"
+                }`}
             >
               Logout
             </button>
-            {updateData.role === "admin" && (
+            {data.role === "admin" && (
               <button className="bg-blue-500 px-4 py-1 mt-1 text-white cursor-pointer">
                 Deshbord
               </button>
@@ -72,7 +88,7 @@ function Profile() {
                     type="text"
                     placeholder="Enter name"
                     name="name"
-                    value={updateData.name}
+                    value={data.name}
                     onChange={onChangeHandler}
                   />
                 </td>
@@ -86,9 +102,8 @@ function Profile() {
                     type="email"
                     placeholder="Enter email"
                     name="email"
-                    value={updateData.email}
+                    value={data.email}
                     onChange={onChangeHandler}
-
                   />
                 </td>
               </tr>
@@ -101,9 +116,8 @@ function Profile() {
                     type="text"
                     placeholder="Enter country"
                     name="country"
-                    value={updateData.address[0].country}
+                    value={data.address.country}
                     onChange={onChangeHandler}
-
                   />
                 </td>
               </tr>
@@ -116,8 +130,8 @@ function Profile() {
                     type="text"
                     placeholder="Enter city"
                     name="city"
-                    value={updateData.address[0].city}
-
+                    value={data.address.city}
+                    onChange={onChangeHandler}
                   />
                 </td>
               </tr>
@@ -130,25 +144,28 @@ function Profile() {
                     type="text"
                     placeholder="Enter street"
                     name="street"
-                    value={updateData.address[0].street}
+                    value={data.address.street}
+                    onChange={onChangeHandler}
                   />
                 </td>
               </tr>
             </tbody>
           </table>
           <div className="flex gap-3">
-            <button className="px-3 py-1 bg-blue-500 mt-6 text-white cursor-pointer active:bg-blue-400"
-              onClick={()=>setEnable(false)}
+            {/* <button
+              className="px-3 py-1 bg-blue-500 mt-6 text-white cursor-pointer active:bg-blue-400"
+              onClick={() => setEnable(false)}
             >
               Edit
-            </button>
-            {enable === false && (
+            </button> */}
+            {/* {!enable && (
               <button
+                onClick={updateHandler}
                 className="px-3 py-1 bg-green-500 mt-6 text-white cursor-pointer active:bg-green-400"
               >
                 Update
               </button>
-            )}
+            )} */}
           </div>
         </div>
       </div>

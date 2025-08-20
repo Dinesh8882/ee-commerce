@@ -247,8 +247,8 @@ const populers_products = [
   {
     id: 16,
     tag: {
-      name: undefined,
-      bgColor: undefined
+      name: "",
+      bgColor: ""
     },
     category: "Shirt",
     title: "Mens Porcelain Shirt",
@@ -451,7 +451,7 @@ const products = [
     },
     price: {
       current: 1275.85,
-      original: null
+      original: 245.8
     },
     isDiscounted: true,
     imageUrl: {
@@ -467,8 +467,8 @@ const products = [
   {
     id: 8,
     tag: {
-      name: undefined,
-      bgColor: undefined
+      name: "New",
+      bgColor: "#ffab73"
     },
     category: "Shirt",
     title: "Mens Porcelain Shirt",

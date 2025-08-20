@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LuSmartphone } from "react-icons/lu";
 import {
   IoLocationOutline,
@@ -24,8 +24,12 @@ import { useSelector } from "react-redux";
 
 function Navbar() {
   const [openNavbar, setOpenNavbar] = useState(false);
+  const token = localStorage.getItem("token");
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
-  const state = useSelector((state)=>state.wishList)
+  useEffect(() => {}, [token]);
+
+  const state = useSelector((state) => state.wishList);
   return (
     <div className="">
       <header className="">
@@ -48,7 +52,7 @@ function Navbar() {
                   <option value="hindi">Hindi</option>
                 </select>
               </div>
-              {/* {!token && (
+              {!isAuthenticated && (
                 <p className="flex items-center px-3">
                   <FiUser />
                   <span>
@@ -56,7 +60,7 @@ function Navbar() {
                     <Link to="/user/register">Sign Up</Link>
                   </span>
                 </p>
-              )} */}
+              )}
             </div>
           </div>
         </div>
@@ -99,11 +103,11 @@ function Navbar() {
               className="md:hidden "
               onClick={() => setOpenNavbar(!openNavbar)}
             />
-            {/* {token && (
+            {isAuthenticated && (
               <Link to="/user/profile">
                 <IoPersonCircleOutline />
               </Link>
-            )} */}
+            )}
           </div>
         </div>
       </header>

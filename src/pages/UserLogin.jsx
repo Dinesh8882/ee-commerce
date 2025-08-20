@@ -1,34 +1,46 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SubButton from "../components/SubButton";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import { loginThunk } from "../features/auth/authThunk";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 function UserLogin() {
   const navigate = useNavigate();
 
+  const dispatch = useDispatch()
   const [data, setData] = useState({
     email: "",
     password: "",
   });
 
-  const url = import.meta.env.VITE_REACT_APP_API_URL;
   const handleUsersData = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${url}/user/login`, data);
-      console.log(response);
+      const response = await dispatch(loginThunk(data)).unwrap()
+      
+      if (response) {
+
+        localStorage.setItem("userData", JSON.stringify(response.data))
+        localStorage.setItem("token", response.token)
+        setToken(localStorage.getItem("token"))
+        toast.success(response.message);
+        navigate("/")
+
+      }
       if (response.data) {
         localStorage.setItem("userData", JSON.stringify(response.data.data));
         localStorage.setItem("token", response.data.token);
 
         navigate('/')
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
- 
+
 
   return (
     <div className="h-screen flex items-center justify-center">

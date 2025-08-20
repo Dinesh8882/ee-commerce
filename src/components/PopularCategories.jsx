@@ -4,7 +4,6 @@ import SliderButton from "./SliderButton";
 
 function PopularCategories() {
   const scrollRef = useRef(null);
-  const [count, setCount] = useState(0);
 
   const extraCategories = [
     categories[categories.length - 1],

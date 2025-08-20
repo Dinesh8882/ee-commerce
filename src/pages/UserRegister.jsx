@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { LuEyeClosed } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import { toast } from "react-toastify";
+import { registerThunk } from "../features/auth/authThunk"; 
+import { useDispatch } from "react-redux";
 
 function UserRegister() {
+
   const [passwordHide, setPasswordHide] = useState(true);
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState({});
   const navigate = useNavigate()
   const [token,setToken] = useState("")
 
-  const url = import.meta.env.VITE_REACT_APP_API_URL;
+
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     name: "",
@@ -32,19 +36,18 @@ function UserRegister() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${url}/user/register`, data);
-      setLoading(true);
-      if (response.data) {
+      const response = await dispatch(registerThunk(data)).unwrap()
+      if (response) {
 
-         localStorage.setItem("userData",JSON.stringify(response.data.data))
-         localStorage.setItem("token",response.data.token)
+         localStorage.setItem("userData",JSON.stringify(response.data))
+         localStorage.setItem("token",response.token)
          setToken(localStorage.getItem("token"))
-         toast.success(response.data.message);
+         toast.success(response.message);
          navigate("/")
 
       }
 
-      setLoading(false);
+   
       setData({
         name: "",
         email: "",
@@ -56,12 +59,12 @@ function UserRegister() {
       });
     } catch (error) {
       const errors = {}
-      error.response.data.error.forEach((err)=>{
-        errors[err.path] = err.msg
-      })
+      console.log("This is an error: ",error);
+      // error.response.data.error.forEach((err)=>{
+      //   errors[err.path] = err.msg
+      // })
 
-      setErrMsg(errors)
-      console.log(errMsg);
+      
     }
   };
 

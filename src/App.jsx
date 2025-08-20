@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/auth/Home";
@@ -12,10 +12,22 @@ import Profile from "./pages/dashboard/Profile";
 import Protected from "./protectedRoutes/Protected";
 import LoginProtected from "./protectedRoutes/LoginProtected";
 import UserRegister from "./pages/UserRegister";
+import { useDispatch } from "react-redux";
+import { setToken } from "./features/auth/authSlice";
 
 const Wishlist = lazy(() => import("./components/Wishlist"));
 
 function Layout() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      dispatch(setToken(token));
+    }
+  }, [dispatch]);
+
   return (
     <div className="">
       <Navbar />
@@ -23,7 +35,6 @@ function Layout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/wishlist" element={<Wishlist />} />
-          {/* <Route path="/cart" element={<Wishlist />} /> */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/shop/checkout" element={<Checkout />} />
           <Route
@@ -60,9 +71,9 @@ function Layout() {
 function App() {
   return (
     <div>
-        <BrowserRouter>
-          <Layout />
-        </BrowserRouter>
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
     </div>
   );
 }
